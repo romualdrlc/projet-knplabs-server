@@ -28,12 +28,13 @@ class ManagerPlayer {
   }
 
   /**
-   * @param array $playerList
+   * @param PlayerEntity[] $playerList
    * @return void
    */
   public function resetScoreByPlayerList(array $playerList): void {
     foreach ($playerList as $player) {
-      dd($player);
+      $playerEntity = new PlayerEntity($player['id'], $player['name'], $player['score']);
+      $this->playerRepository->resetPlayerScore($playerEntity);
     }
   }
 }
